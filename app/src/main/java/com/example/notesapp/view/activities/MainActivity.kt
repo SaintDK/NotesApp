@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         add_Note_Button.setOnClickListener {
-            val intent = Intent(this, Add_Activity::class.java)
+            val intent = Intent(this, AddActivity::class.java)
             startActivity(intent)
         }
 
