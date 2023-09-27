@@ -12,19 +12,14 @@ abstract class NotesDatabase : RoomDatabase() {
 
     abstract fun getNotesDao(): NotesDao
 
-    companion object {
-        private var INSTANCE: NotesDatabase? = null
-
-        fun getInstance(context: Context): NotesDatabase {
-            return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
-                    context.applicationContext,
-                    NotesDatabase::class.java,
-                    "notes-database"
-                ).build()
-                INSTANCE = instance
-                instance
-            }
+    companion object{
+        fun getDatabase(context: Context): NotesDatabase {
+            return Room.databaseBuilder(
+                context.applicationContext,
+                NotesDatabase::class.java,
+                "notes-database.db"
+            ).build()
         }
     }
+
 }

@@ -56,10 +56,14 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$Navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$Navigation_version"
 
-    def ROOM_Version = "2.5.2"
+    def ROOM_Version = "2.4.3"
     implementation "androidx.room:room-runtime:$ROOM_Version"
-    annotationProcessor "androidx.room:room-compiler:$ROOM_Version"
+    kapt "androidx.room:room-compiler:$ROOM_Version"
 
     def Transition_version = "1.4.0"
     implementation "androidx.transition:transition:$Transition_version"
+
+    //lifecycle
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+
 }

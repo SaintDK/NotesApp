@@ -8,12 +8,11 @@ import androidx.room.PrimaryKey
 data class EntityNotes(
 
     @PrimaryKey(autoGenerate = true)
-    val id: String = "",
+    var id: Int? = null,
 
-    @ColumnInfo(name = "name")
-    val name: String,
-
-    @ColumnInfo(name = "content")
-    val content: String
+    @ColumnInfo(name = "tags")
+    var tag: String,
+    @ColumnInfo(name = "descriptions")
+    var description: String,
 
 )

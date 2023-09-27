@@ -43,9 +43,9 @@ class StartItemFragment : Fragment() {
                 }
                 val entityNotesList = PlaceholderContent.ITEMS.map { placeholderItem ->
                     EntityNotes(
-                        id = placeholderItem.id,
-                        name = placeholderItem.name,
-                        content = placeholderItem.content
+//                        id = placeholderItem.id,
+                        tag = placeholderItem.name,
+                        description = placeholderItem.content
                     )
                 }
 

@@ -36,8 +36,8 @@ class NotesRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.name
+        holder.idView.text = item.tag
+        holder.contentView.text = item.description
     }
 
     override fun getItemCount(): Int = values.size
@@ -50,7 +50,7 @@ class NotesRecyclerViewAdapter(
         init {
             binding.root.setOnClickListener {
                 val item = values[adapterPosition]
-                Toast.makeText(itemView.context, "Clicked item: ${item.name}", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(itemView.context, "Clicked item: ${item.name}", Toast.LENGTH_SHORT).show()
 
                 // Создать объект ValueAnimator для анимации альфа-канала
                 val alphaAnimator = ValueAnimator.ofFloat(1f, 0.5f, 1f)
