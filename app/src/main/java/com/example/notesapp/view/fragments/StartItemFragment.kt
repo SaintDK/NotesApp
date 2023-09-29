@@ -10,6 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.notesapp.view.adapters.NotesRecyclerViewAdapter
 import com.example.notesapp.R
+import com.example.notesapp.model.dao.NotesDao
+import com.example.notesapp.model.database.NotesDatabase
 import com.example.notesapp.model.entities.EntityNotes
 import com.example.notesapp.model.placeholder.PlaceholderContent
 
@@ -41,15 +43,26 @@ class StartItemFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                val entityNotesList = PlaceholderContent.ITEMS.map { placeholderItem ->
-                    EntityNotes(
-//                        id = placeholderItem.id,
-                        tag = placeholderItem.name,
-                        description = placeholderItem.content
-                    )
-                }
-
-                adapter = NotesRecyclerViewAdapter(entityNotesList)
+//                val entityNotesList = PlaceholderContent.ITEMS.map { placeholderItem ->
+//                    EntityNotes(
+////                        id = placeholderItem.id,
+//                        tag = placeholderItem.name,
+//                        description = placeholderItem.content
+//                    )
+//                }
+                val notesDatabase = NotesDatabase.getDatabase(requireContext())
+                val notesDao = notesDatabase.getNotesDao()
+                Thread{
+                    val entityNotesList = notesDao.getAllNotes().map { note ->
+                        EntityNotes(
+                            id = note.id,
+                            tag = note.tag,
+//                            description = note.description
+                            description = ""
+                        )
+                    }
+                    adapter = NotesRecyclerViewAdapter(entityNotesList)
+                }.start()
             }
         }
         return view
