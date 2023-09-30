@@ -3,6 +3,7 @@ package com.example.notesapp.model.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.notesapp.model.entities.EntityNotes
 
 @Dao
@@ -17,8 +18,8 @@ interface NotesDao {
     @Insert
     fun insertNote(note: EntityNotes)
 
-//    @Update
-//    fun updateNote(note: EntityNotes)
+    @Update
+    fun updateNote(note: EntityNotes) // Добавленный метод для обновления записи
 //
 //    @Delete
 //    fun deleteNote(note: EntityNotes)
