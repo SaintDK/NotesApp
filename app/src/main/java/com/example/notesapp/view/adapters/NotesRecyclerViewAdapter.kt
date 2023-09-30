@@ -1,17 +1,22 @@
 package com.example.notesapp.view.adapters
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.transition.*
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.animation.OvershootInterpolator
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 
 import com.example.notesapp.model.placeholder.PlaceholderContent.PlaceholderItem
 import com.example.notesapp.databinding.FragmentStartItemBinding
 import com.example.notesapp.model.entities.EntityNotes
+import com.example.notesapp.view.activities.AddActivity
+import com.example.notesapp.view.activities.UpdateActivity
 
 
 /**
@@ -55,15 +60,21 @@ class NotesRecyclerViewAdapter(
                 // Создать объект ValueAnimator для анимации альфа-канала
                 val alphaAnimator = ValueAnimator.ofFloat(1f, 0.5f, 1f)
                 alphaAnimator.duration = 300
-
                 // Задать слушатель обновления значения альфа-канала
                 alphaAnimator.addUpdateListener { animator ->
                     val alpha = animator.animatedValue as Float
                     binding.root.alpha = alpha
                 }
-
                 // Запустить анимацию альфа-канала
                 alphaAnimator.start()
+
+                val context = itemView.context
+                val intent = Intent(context, UpdateActivity::class.java)
+                intent.putExtra("item_id", item.id.toString())
+//                Log.d("tag123123", "${item.id}" + " itemId")
+//                intent.putExtra("item_tag", item.tag)
+//                intent.putExtra("item_description", item.description)
+                context.startActivity(intent)
             }
         }
 

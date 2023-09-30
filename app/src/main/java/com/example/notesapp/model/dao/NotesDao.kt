@@ -12,7 +12,7 @@ interface NotesDao {
     fun getAllNotes(): List<EntityNotes>
 
     @Query("SELECT * FROM `notes-table` WHERE id = :id")
-    fun getNoteById(id: Int): EntityNotes?
+    fun getNoteById(id: String?): EntityNotes?
 
     @Insert
     fun insertNote(note: EntityNotes)
