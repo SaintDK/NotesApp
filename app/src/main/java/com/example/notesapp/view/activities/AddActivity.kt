@@ -63,8 +63,8 @@ class AddActivity : AppCompatActivity() {
         val tag = viewModel.tagText.value
         val description = viewModel.descriptionText.value
 
-        if (!tag.isNullOrEmpty() || !description.isNullOrEmpty()) {
-            val note = EntityNotes(null, tag = tag.orEmpty(), description = description.orEmpty())
+        if (!tag.isNullOrEmpty() && !description.isNullOrEmpty()) {
+            val note = EntityNotes(null, tag = tag, description = description)
             viewModel.saveNoteToDatabase(note)
         }
     }

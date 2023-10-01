@@ -16,7 +16,7 @@ interface NotesDao {
     fun insertNote(note: EntityNotes)
 
     @Update
-    fun updateNote(note: EntityNotes) // Добавленный метод для обновления записи
+    fun updateNote(note: EntityNotes)
 
     @Delete
     fun deleteNote(note: EntityNotes)
