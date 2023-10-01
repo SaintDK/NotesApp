@@ -57,23 +57,20 @@ class NotesRecyclerViewAdapter(
                 val item = values[adapterPosition]
 //                Toast.makeText(itemView.context, "Clicked item: ${item.name}", Toast.LENGTH_SHORT).show()
 
-                // Создать объект ValueAnimator для анимации альфа-канала
+                // объект ValueAnimator для анимации альфа-канала
                 val alphaAnimator = ValueAnimator.ofFloat(1f, 0.5f, 1f)
                 alphaAnimator.duration = 300
-                // Задать слушатель обновления значения альфа-канала
+                // слушатель обновления значения альфа-канала
                 alphaAnimator.addUpdateListener { animator ->
                     val alpha = animator.animatedValue as Float
                     binding.root.alpha = alpha
                 }
-                // Запустить анимацию альфа-канала
+                // Запуск анимации альфа-канала
                 alphaAnimator.start()
 
                 val context = itemView.context
                 val intent = Intent(context, UpdateActivity::class.java)
                 intent.putExtra("item_id", item.id.toString())
-//                Log.d("tag123123", "${item.id}" + " itemId")
-//                intent.putExtra("item_tag", item.tag)
-//                intent.putExtra("item_description", item.description)
                 context.startActivity(intent)
             }
         }

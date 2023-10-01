@@ -43,13 +43,6 @@ class StartItemFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-//                val entityNotesList = PlaceholderContent.ITEMS.map { placeholderItem ->
-//                    EntityNotes(
-////                        id = placeholderItem.id,
-//                        tag = placeholderItem.name,
-//                        description = placeholderItem.content
-//                    )
-//                }
                 val notesDatabase = NotesDatabase.getDatabase(requireContext())
                 val notesDao = notesDatabase.getNotesDao()
                 Thread{
@@ -57,7 +50,6 @@ class StartItemFragment : Fragment() {
                         EntityNotes(
                             id = note.id,
                             tag = note.tag,
-//                            description = note.description
                             description = ""
                         )
                     }

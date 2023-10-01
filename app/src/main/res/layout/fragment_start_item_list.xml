@@ -9,4 +9,4 @@
     app:layoutManager="LinearLayoutManager"
     tools:context=".view.fragments.StartItemFragment"
     tools:listitem="@layout/fragment_start_item"
-    android:background="@color/teal_700"/>
+    android:background="@color/black"/>
